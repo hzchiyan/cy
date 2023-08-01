@@ -20,7 +20,7 @@ func init() {
 }
 
 var websiteCmd = &cobra.Command{
-	Use:   "website_ssl",
+	Use:   "website-ssl",
 	Short: "部署站点ssl",
 	Long:  "部署站点ssl",
 	Run: func(cmd *cobra.Command, args []string) {
