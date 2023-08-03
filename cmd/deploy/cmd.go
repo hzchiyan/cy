@@ -1,6 +1,9 @@
 package deploy
 
-import "github.com/spf13/cobra"
+import (
+	"github.com/hzchiyan/cy/internal/fs"
+	"github.com/spf13/cobra"
+)
 
 var Cmd = &cobra.Command{
 	Use:   "deploy",
@@ -11,4 +14,13 @@ var Cmd = &cobra.Command{
 func init() {
 	Cmd.AddCommand(websiteCmd)
 	Cmd.AddCommand(goWebSiteCmd)
+	Cmd.AddCommand(htmlWebSiteCmd)
+}
+
+func writeFileNginxConfig(host, nginxConfig string) error {
+	nginxfile := "/etc/nginx/conf.d/" + host + ".conf"
+	if _, err := fs.WriteFile(nginxfile, nginxConfig); err != nil {
+		return err
+	}
+	return nil
 }

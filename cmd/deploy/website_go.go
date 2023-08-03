@@ -2,7 +2,6 @@ package deploy
 
 import (
 	"fmt"
-	"github.com/hzchiyan/cy/internal/fs"
 	"github.com/spf13/cobra"
 )
 
@@ -44,9 +43,8 @@ var goWebSiteCmd = &cobra.Command{
 			"\n}\n"+
 			"location /.well-known {root %s;}"+
 			"\n}\n", goWebSiteHostDir, goWebSiteHost, goPort, goWebSiteHostDir)
-		nginxfile := "/etc/nginx/conf.d/" + goWebSiteHost + ".conf"
-		if _, err := fs.WriteFile(nginxfile, nginxConfig); err != nil {
-			fmt.Println(nginxfile + "写入失败")
+		if err := writeFileNginxConfig(goWebSiteHost, nginxConfig); err != nil {
+			fmt.Println(err)
 			return
 		}
 		fmt.Println("-------------------------------------")
