@@ -50,6 +50,7 @@ var goWebSiteCmd = &cobra.Command{
 			return
 		}
 		fmt.Println("-------------------------------------")
+		fmt.Println("执行nginx -t")
 		fmt.Println("执行nginx -s reload")
 		fmt.Println("-------------------------------------")
 	},
