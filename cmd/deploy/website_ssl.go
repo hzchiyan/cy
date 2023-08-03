@@ -30,7 +30,7 @@ var websiteCmd = &cobra.Command{
 			return
 		}
 		if dir == "" {
-			fmt.Println("--path 参数未传递 域名部署的目录")
+			fmt.Println("--dir 参数未传递 域名部署的目录")
 			return
 		}
 		websiteSSL, err := ssl.WebsiteSSL(model.DB, email, host, dir)

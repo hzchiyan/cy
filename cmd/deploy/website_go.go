@@ -28,7 +28,7 @@ var goWebSiteCmd = &cobra.Command{
 			return
 		}
 		if goWebSiteHostDir == "" {
-			fmt.Println("--path 参数未传递 域名部署的目录")
+			fmt.Println("--dir 参数未传递 域名部署的目录")
 			return
 		}
 		nginxConfig := fmt.Sprintf("server {\n"+
