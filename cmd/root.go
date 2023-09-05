@@ -2,7 +2,6 @@ package cmd
 
 import (
 	"github.com/hzchiyan/cy/cmd/deploy"
-	"github.com/hzchiyan/cy/cmd/proxy"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -23,5 +22,4 @@ func Execute() {
 
 func init() {
 	rootCmd.AddCommand(deploy.Cmd)
-	rootCmd.AddCommand(proxy.Cmd)
 }

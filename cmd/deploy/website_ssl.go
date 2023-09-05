@@ -26,7 +26,7 @@ var websiteCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		email := ids.MacID() + "@hzchiyangithub.com"
 		if host == "" {
-			fmt.Println("--domain 参数未传递 域名")
+			fmt.Println("--host 参数未传递 域名")
 			return
 		}
 		if dir == "" {
@@ -45,7 +45,7 @@ var websiteCmd = &cobra.Command{
 			return
 		}
 		keyFile := "/etc/nginx/" + host + ".key"
-		pemFile := "/etc/nginx/" + host + ".key"
+		pemFile := "/etc/nginx/" + host + ".pem"
 		_, err = fs.WriteFile(keyFile, websiteSSL.PrivateKey)
 		if err != nil {
 			fmt.Println(keyFile + "写入失败")
