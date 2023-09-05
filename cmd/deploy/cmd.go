@@ -24,3 +24,11 @@ func writeFileNginxConfig(host, nginxConfig string) error {
 	}
 	return nil
 }
+
+func writeFilSupervisorConfig(host, nginxConfig string) error {
+	nginxfile := "/etc/supervisor/conf.d/" + host + ".conf"
+	if _, err := fs.WriteFile(nginxfile, nginxConfig); err != nil {
+		return err
+	}
+	return nil
+}

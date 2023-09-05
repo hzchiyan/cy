@@ -47,9 +47,23 @@ var goWebSiteCmd = &cobra.Command{
 			fmt.Println(err)
 			return
 		}
+		supervisorConfig := fmt.Sprintf("[program:%s]\n"+
+			"command=%s/main\n"+
+			"directory=%s \n"+
+			"autostart=true\n"+
+			"autorestart=true\n"+
+			"redirect_stderr=true\n"+
+			"stdout_logfile=/data/wwwroot/%s.log\n"+
+			"stderr_logfile=/data/wwwroot/%s-err.log", goWebSiteHost, goWebSiteHostDir, goWebSiteHostDir, goWebSiteHost, goWebSiteHost)
+		if err := writeFilSupervisorConfig(goWebSiteHost, supervisorConfig); err != nil {
+			fmt.Println(err)
+			return
+		}
 		fmt.Println("-------------------------------------")
-		fmt.Println("执行nginx -t")
-		fmt.Println("执行nginx -s reload")
+		fmt.Println("执行一下命令：")
+		fmt.Println("nginx -t")
+		fmt.Println("nginx -s reload")
+		fmt.Println("service supervisor restart")
 		fmt.Println("-------------------------------------")
 	},
 }
