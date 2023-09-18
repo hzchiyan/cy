@@ -58,7 +58,7 @@ var websiteCmd = &cobra.Command{
 		}
 		fmt.Println("---------------nginx config append-------------------")
 		fmt.Println(fmt.Sprintf(""+
-			"listen 443 deploy http2; \n"+
+			"listen 443 http2; \n"+
 			"ssl_certificate  %s;\n  "+
 			"ssl_certificate_key  %s;\n  "+
 			"ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;\n    "+
